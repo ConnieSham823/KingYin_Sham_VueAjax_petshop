@@ -1,4 +1,4 @@
-![SKY Portfolio](images/about-sky.png)
+![SKY Portfolio](images/sky-petshop.png)
 
 # KingYin_Sham_VueAjax_petshop
 This project is a pet shop website built using Vue.js, AJAX, and a Lumen API. It allows users to view a list of available pets, fetch detailed pet information, and interact with the website through a smooth, dynamic interface. The front-end is powered by Vue.js for reactive data binding and real-time updates, while AJAX handles asynchronous communication with the Lumen-powered backend API to fetch pet data. This project demonstrates the integration of modern web development technologies to create an interactive and responsive pet shop experience.
