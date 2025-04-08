@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SKY Pet Shop</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sniglet:wght@400;800&display=swap" rel="stylesheet">
+    <link href="css/grid.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollToPlugin.min.js"></script>
+    <script defer src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script type="module" src="js/main.js"></script>
+</head>
+<body>
+    <header class=".full-width-grid-con">
+        <h1 class="hidden">SKY Pet Shop</h1>
+        <div class="hero-img">
+            <img
+            sizes="100vw"
+            srcset="
+            images/sky-hero_qckxtp_c_scale,w_190.png 190w,
+            images/sky-hero_qckxtp_c_scale,w_481.png 481w,
+            images/sky-hero_qckxtp_c_scale,w_672.png 672w,
+            images/sky-hero_qckxtp_c_scale,w_847.png 847w,
+            images/sky-hero_qckxtp_c_scale,w_974.png 974w,
+            images/sky-hero_qckxtp_c_scale,w_1091.png 1091w,
+            images/sky-hero_qckxtp_c_scale,w_1203.png 1203w,
+            images/sky-hero_qckxtp_c_scale,w_1308.png 1308w,
+            images/sky-hero_qckxtp_c_scale,w_1408.png 1408w,
+            images/sky-hero_qckxtp_c_scale,w_1493.png 1493w,
+            images/sky-hero_qckxtp_c_scale,w_1578.png 1578w,
+            images/sky-hero_qckxtp_c_scale,w_1667.png 1667w,
+            images/sky-hero_qckxtp_c_scale,w_1747.png 1747w,
+            images/sky-hero_qckxtp_c_scale,w_1831.png 1831w,
+            images/sky-hero_qckxtp_c_scale,w_1876.png 1876w,
+            images/sky-hero_qckxtp_c_scale,w_1920.png 1920w"
+            src="sky-hero_qckxtp_c_scale,w_1920.png"
+            alt="SKY Pet Shop - Main Hero Image">
+        </div>
+
+        <button id="back-to-top" class="back-to-top-button">
+            <img src="images/back-top.png" alt="Back to Top">
+        </button>
+    </header>
+
+        <div class="grid-con" id="app">
+            
+            <div class="col-span-full t-col-span-full">
+                <h2>Adorable Pets</h2>
+                <p>Click on a pet to find out more!</p>
+
+                <!-- Loader for pet data -->
+                <div v-if="loadingPets">
+                    <img src="images/loader2.svg" alt="loading indicator" class="loader">
+                </div>
+
+                <!-- List of pets -->
+                <section id="pet-con">
+                    <ul>
+                        <div id="pet-list">
+                            <li v-for="pet in petsData" :key="pet.id">
+                                <div class="pet-card grid-con">
+                                    <a class="col-start-1 col-end-3" href="#pet" @click="getDog(pet.id)">
+                                        <img src="images/arrow.png" alt="Arrow Icon" class="arrow">
+                                        <img :src="`images/${pet.pet_image}`" alt="Pet Image" id="pet-img">
+                                    </a>
+                                    
+                                    <div id="char-con" class="col-start-3 col-end-5 t-col-span-full">
+                                        <h2>{{ pet.breed }}</h2>
+                                        <h3>Characteristics</h3>
+                                        <p><span class="title"></span>{{ pet.character_1 }}</p>
+                                        <p><span class="title"></span>{{ pet.character_2 }}</p>
+                                    </div>
+                                </div>
+                            </li>
+                        </div>
+                    </ul>
+                </section>
+                
+            </div>
+
+        <!-- Pet Information Section -->
+            <div class="col-span-full t-col-span-full" id="petInfoCon">
+                    <div v-if="loading">
+                        <img src="images/loader2.svg" alt="loading indicator" class="loader">
+                    </div>
+
+                    <section v-if="error">
+                        {{ error }}
+                    </section>
+
+                    <!-- Info Box showing dog details -->
+                <section class="grid-con" id="info-box" v-if="dog_name">
+                    <h2 class="col-span-full t-col-span-full">Pet Bio</h2>
+                        <h3 class="col-span-full t-col-span-full"><span> My Name is </span> {{ dog_name }}</h3>
+                        <img :src="`images/${dog_image}`" alt="Dog Image" class="col-start-1 col-end-3 t-col-start-1 t-col-end-6 l-col-start-3 l-col-end-6" id="dog-img">
+
+                    <div id="pet-info-con" class="col-start-3 col-end-5 t-col-start-7 t-col-end-12">
+                        <h4>Information</h4>
+                        <p><span class="title">Breed:</span> {{ breed }}</p>
+                        <p><span class="title">Sex:</span> {{ sex }}</p>
+                        <p><span class="title">Location:</span> {{ location }}</p>
+                        <p><span class="title">Price: </span> {{ price }}</p>
+                    </div>
+                </section>
+
+            </div>
+
+        </div>
+
+        
+
+    <footer>
+        <p>© 2025 SKY Pet Shop <br> All rights reserved.</p>
+    </footer>
+
+    
+</body>
+</html>
+
