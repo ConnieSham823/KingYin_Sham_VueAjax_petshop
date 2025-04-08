@@ -1,0 +1,84 @@
+@use '../abstracts' as a;
+
+h2 {
+    font-size: 2.2rem;
+    color: a.$primary-color;
+    text-align: center;
+    margin: 0 auto;
+    padding-top: 10px;
+}
+
+h3 {
+    font-size: 1.5rem;
+    color: a.$primary-color;
+    text-align: start;
+    margin: 0 auto;
+    padding-top: 10px;
+}
+
+p {
+    font-size: 1.3rem;
+    color: a.$body-text-color;
+    text-align: center;
+    margin: 0 auto;
+    padding-top: 10px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.loader {
+    max-width: 100px;
+}
+
+footer p {
+    font-size: 0.8rem;
+    color: #ffffff;
+    padding: 30px 0px;
+}
+
+footer {
+    background-color: a.$primary-color;
+}
+
+#back-to-top {
+    position: fixed;
+    bottom: 8px;
+    right: 10px;
+    background-color: transparent;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 1000;
+    display: none; 
+}
+
+#back-to-top img {
+    width: 80px; 
+    height: 80px;
+}
+
+#back-to-top:hover {
+    opacity: 0.6;
+    transform: scale(1.2);
+    transition: transform 0.3s ease;
+}
+
+#info-box img {
+    animation: scaleUp 3s ease-out forwards;
+}
+
+@keyframes scaleUp {
+    0% {
+        transform: scale(0.3); 
+        opacity: 0.8; 
+    }
+    100% {
+        transform: scale(1); 
+        opacity: 1; 
+    }
+}
+
